@@ -7,11 +7,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://finance-dashboard-mj4u.onrender.com',
         changeOrigin: true,
       },
       '/health': {
-        target: 'http://localhost:5000',
+        target: 'https://finance-dashboard-mj4u.onrender.com',
         changeOrigin: true,
       },
     },
