@@ -2,6 +2,27 @@ import { useState } from 'react'
 import { Link, Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/useAuth'
 
+const DEMO_CREDENTIALS = [
+  {
+    role: 'Viewer',
+    email: 'viewer@gmail.com',
+    password: 'viewer123',
+    description: 'Can view dashboard and analytics only'
+  },
+  {
+    role: 'Analyst',
+    email: 'analyst@gmail.com',
+    password: 'analyst123',
+    description: 'Can view, create, and update transactions'
+  },
+  {
+    role: 'Admin',
+    email: 'admin@gmail.com',
+    password: 'admin123',
+    description: 'Full access including user management'
+  }
+]
+
 export default function Login() {
   const { user, ready, login } = useAuth()
   const location = useLocation()
@@ -84,6 +105,26 @@ export default function Login() {
         <p className="auth-footer text-muted">
           No account? <Link to="/register">Create one</Link>
         </p>
+
+        <div className="demo-credentials">
+          <p className="demo-header">Demo Accounts</p>
+          <div className="demo-list">
+            {DEMO_CREDENTIALS.map((cred) => (
+              <div key={cred.role} className="demo-card">
+                <div className="demo-role">{cred.role}</div>
+                <div className="demo-field">
+                  <label>Email:</label>
+                  <code>{cred.email}</code>
+                </div>
+                <div className="demo-field">
+                  <label>Password:</label>
+                  <code>{cred.password}</code>
+                </div>
+                <p className="demo-description">{cred.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
