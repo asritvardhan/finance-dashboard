@@ -1,6 +1,11 @@
 const TOKEN_KEY = 'fd_token'
 const REFRESH_KEY = 'fd_refresh'
 
+/** Deployed API (Render). Set VITE_API_URL to override; use empty string for relative /api + Vite dev proxy. */
+const API_ORIGIN = (
+  import.meta.env.VITE_API_URL ?? 'https://finance-dashboard-mj4u.onrender.com'
+).replace(/\/$/, '')
+
 export function getStoredToken() {
   return localStorage.getItem(TOKEN_KEY)
 }
@@ -36,7 +41,7 @@ export async function api(path, options = {}) {
     headers.set('Authorization', `Bearer ${token}`)
   }
 
-  const res = await fetch(`/api${path}`, {
+  const res = await fetch(`${API_ORIGIN}/api${path}`, {
     ...rest,
     headers,
     body: json !== undefined ? JSON.stringify(json) : rest.body,
