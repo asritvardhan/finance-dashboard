@@ -3,7 +3,7 @@ const REFRESH_KEY = 'fd_refresh'
 
 /** Deployed API (Render). Set VITE_API_URL to override; use empty string for relative /api + Vite dev proxy. */
 const API_ORIGIN = (
-  import.meta.env.VITE_API_URL ?? 'https://finance-dashboard-mj4u.onrender.com'
+  import.meta.env.VITE_API_URL ?? 'https://finance-dashboard-mj4u.onrender.com/api'
 ).replace(/\/$/, '')
 
 export function getStoredToken() {
