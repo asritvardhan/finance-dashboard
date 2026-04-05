@@ -28,7 +28,7 @@ app.use(helmet({
 
 // CORS configuration
 const corsOptions = {
-    origin: process.env.CORS_ORIGIN || 'https://finance-dashboard-umber-sigma.vercel.app/',
+    origin: process.env.CORS_ORIGIN || 'https://finance-dashboard-umber-sigma.vercel.app',
     credentials: true,
     optionsSuccessStatus: 200
 };
